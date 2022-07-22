@@ -36,9 +36,12 @@ function openModal(event) {
   );
   instance.show();
 
-  window.addEventListener("keydown", (event) => {
+  window.addEventListener("keydown", onEscClose);
+
+  function onEscClose(event) {
     if (event.code === "Escape") {
+      window.removeEventListener("keydown", onEscClose);
       instance.close();
     }
-  });
+  }
 }
